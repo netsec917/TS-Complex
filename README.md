@@ -1,2 +1,2 @@
-# TypeScript-Complex-Number
+# TS-Complex
 A Complex number class for TypeScript
