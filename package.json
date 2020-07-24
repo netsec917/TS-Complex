@@ -1,5 +1,5 @@
 {
-  "name": "ts-complex",
+  "name": "ts-complex-numbers",
   "version": "1.0.0",
   "description": "A Complex numbers class for TypeScript",
   "main": "lib/complex.js",
@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netsec917/TypeScript-Complex-Number.git"
+    "url": "git+https://github.com/netsec917/TS-Complex.git"
   },
   "keywords": ["complex", "numbers", "maths", "class"],
   "author": "Thomas Burrows",
   "license": "GPL",
   "bugs": {
-    "url": "https://github.com/netsec917/TypeScript-Complex-Number/issues"
+    "url": "https://github.com/netsec917/TS-Complex/issues"
   },
-  "homepage": "https://github.com/netsec917/TypeScript-Complex-Number#readme",
+  "homepage": "https://github.com/netsec917/TS-Complex#readme",
   "devDependencies": {
     "@types/jest": "^26.0.5",
     "eslint": "^7.5.0",

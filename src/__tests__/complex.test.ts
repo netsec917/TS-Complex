@@ -59,3 +59,15 @@ test('Magnitude', () => {
   let mag = x.magnitude();
   expect(x.magnitude()).toBeCloseTo(7.615);
 });
+
+test('Conjugate', () => {
+  let x = new complex(3, 7);
+  let mag = x.magnitude();
+  expect(x.magnitude()).toBeCloseTo(7.615);
+});
+
+test('fromPolar', () => {
+  let x = new complex(3, 7);
+  let mag = x.magnitude();
+  expect(x.magnitude()).toBeCloseTo(7.615);
+});

@@ -90,10 +90,29 @@ export class complex {
     }
 
     /**
-    * Get the magnitude of the complex number
-    * @returns The magnitude - sqroot(a^2 + b^2)
+    * Get the magnitude(absolute value) of the complex number
+    * @returns The magnitude: sqroot(a^2 + b^2)
     */
     public magnitude() : number {
         return Math.sqrt((this.real * this.real) + (this.imaginary * this.imaginary));
+    }
+
+    /**
+    * Get the conjugate of the complex number
+    * @returns The conjugate of the complex number:  a + (-bi)
+    */
+    public conjugate() : complex {
+        return new complex(this.real, -this.imaginary);
+    }
+
+
+    /**
+    * Statc method to construct a complex number in rectangular form from polar coordinates
+    * @param theta - The angle of the polar coordinate pair
+    * @param magnitude - The magnitude of the polar coordinate pair
+    * @returns Complex number constructed from theta & the magnitude
+    */
+    public static fromPolar(theta : number, magnitude : number) : complex {
+        return new complex(magnitude * Math.cos(theta), magnitude * Math.sin(theta));
     }
 }
