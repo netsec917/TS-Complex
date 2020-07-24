@@ -62,12 +62,16 @@ test('Magnitude', () => {
 
 test('Conjugate', () => {
   let x = new complex(3, 7);
-  let mag = x.magnitude();
-  expect(x.magnitude()).toBeCloseTo(7.615);
+  let xBar = x.conjugate();
+  expect(xBar.real).toBe(3);
+  expect(xBar.imaginary).toBe(-7);
 });
 
-test('fromPolar', () => {
-  let x = new complex(3, 7);
-  let mag = x.magnitude();
-  expect(x.magnitude()).toBeCloseTo(7.615);
+test('fromPolarRadians', () => {
+  // in radians
+  let theta = 2.00;
+  let magnitude = 5.00;
+  let x = complex.fromPolar(theta, magnitude);
+  expect(x.real).toBeCloseTo(-2.08);
+  expect(x.imaginary).toBeCloseTo(4.55);
 });

@@ -7,8 +7,8 @@ export class complex {
         
     /**
     * Construct a new complex number from two real numbers
-    * @param real - 
-    * @param imaginary - 
+    * @param real - The real component
+    * @param imaginary - The imaginary component
     * @returns Complex number constructed from given parameters
     */
     constructor(real: number, imaginary: number) {
@@ -105,11 +105,10 @@ export class complex {
         return new complex(this.real, -this.imaginary);
     }
 
-
     /**
     * Statc method to construct a complex number in rectangular form from polar coordinates
-    * @param theta - The angle of the polar coordinate pair
-    * @param magnitude - The magnitude of the polar coordinate pair
+    * @param theta - The angle 
+    * @param magnitude - The magnitude
     * @returns Complex number constructed from theta & the magnitude
     */
     public static fromPolar(theta : number, magnitude : number) : complex {
