@@ -3,7 +3,7 @@ export class complex {
     /** The real component of the complex number */
     private _real: number;
     /** The imaginary component of the complex number */
-    private _imaginary: number;
+    private _img: number;
         
     /**
     * Construct a new complex number from two real numbers
@@ -13,7 +13,7 @@ export class complex {
     */
     constructor(real: number, imaginary: number) {
         this._real = real;
-        this._imaginary = imaginary;
+        this._img = imaginary;
     }
    
     /**
@@ -28,8 +28,8 @@ export class complex {
     * Get the imaginary component of the complex number
     * @returns The imaginary component - this._imaginary
     */
-    get imaginary() : number {
-        return this._imaginary;
+    get img() : number {
+        return this._img;
     }
     
     /**
@@ -38,7 +38,7 @@ export class complex {
     * @returns x + other
     */
     public add(other: complex) : complex {
-        return new complex(this._real + other.real, this._imaginary + other.imaginary);
+        return new complex(this._real + other.real, this._img + other.img);
     }
 
     /**
@@ -46,8 +46,8 @@ export class complex {
     * @param other - The 2nd complex number operand
     * @returns x - other
     */
-    public subtract(other: complex) : complex {
-        return new complex(this._real - other.real, this._imaginary - other.imaginary);
+    public sub(other: complex) : complex {
+        return new complex(this._real - other.real, this._img - other.img);
     }
 
     /**
@@ -55,9 +55,9 @@ export class complex {
     * @param other - The 2nd complex number operand
     * @returns The product of x / other
     */
-    public multiply(other: complex) : complex {
-        return new complex(this.real * other.real - this._imaginary * other.imaginary, 
-            this.real * other.imaginary + this._imaginary * other.real);
+    public mult(other: complex) : complex {
+        return new complex(this.real * other.real - this._img * other.img, 
+            this.real * other.img + this._img * other.real);
     }
 
     /**
@@ -65,18 +65,18 @@ export class complex {
     * @param other - The 2nd complex number operand
     * @returns The result of the division x / other
     */
-    public divide(other: complex) : complex {
+    public div(other: complex) : complex {
     /* Complex division:
         ac + bd     bc - ad
         -------- + -------- i
         c^2 + d^2  c^2 + d^2
     */
         let ac = this._real * other.real;
-        let bd = this._imaginary * other.imaginary;
-        let bc = this._imaginary * other.real;
-        let ad = this._real * other.imaginary;
+        let bd = this._img * other.img;
+        let bc = this._img * other.real;
+        let ad = this._real * other.img;
         let cc = other.real * other.real;
-        let dd = other.imaginary * other.imaginary; 
+        let dd = other.img * other.img; 
         return new complex((ac + bd) / (cc + dd), (bc - ad) / (cc + dd));
     }
 
@@ -85,47 +85,64 @@ export class complex {
     * @param lambda - The real number scaling factor
     * @returns The scaled version of the complex number
     */
-    public scalarMultiply(lambda : number) : complex {
-        return new complex(lambda * this.real, lambda * this.imaginary);
+    public scalarMult(lambda : number) : complex {
+        return new complex(lambda * this.real, lambda * this.img);
     }
 
     /**
     * Get the magnitude(absolute value) of the complex number
     * @returns The magnitude: sqroot(a^2 + b^2)
     */
-    public magnitude() : number {
-        return Math.sqrt((this.real * this.real) + (this.imaginary * this.imaginary));
+    public mag() : number {
+        return Math.sqrt((this.real * this.real) + (this.img * this.img));
     }
 
     /**
     * Get the conjugate of the complex number
     * @returns The conjugate of the complex number:  a + (-bi)
     */
-    public conjugate() : complex {
-        return new complex(this.real, -this.imaginary);
+    public conj() : complex {
+        return new complex(this.real, -this.img);
     }
 
     /**
     * Get the arguement of the complex number, the angle in radians with the x-axis in polar coordinates 
     * @returns The arguement of the complex number
     */
-    public arguement() : number {
-        return Math.atan2(this.imaginary, this.real);
+    public arg() : number {
+        return Math.atan2(this.img, this.real);
     }
 
     /**
     * Get the exponential of the complex number
     * @returns The The exponential of the complex number: (exp(a) * cos(b)) + (exp(a) * sin(b))(i)
     */
-    public exponential() : complex {
-        return new complex(Math.exp(this.real) * Math.cos(this.imaginary), Math.exp(this.real) * Math.sin(this.imaginary));
+    public exp() : complex {
+        return new complex(Math.exp(this.real) * Math.cos(this.img), Math.exp(this.real) * Math.sin(this.img));
     }
+
+    /**
+    * Get the sine of the complex number
+    * @returns The sine of the complex number
+    */
+    public sin() : complex {
+        return new complex(Math.cosh(this.img) * Math.sin(this.real), -Math.sinh(this.img) * Math.cos(this.real));
+    }
+
+    /**
+    * Get the cosine of the complex number
+    * @returns The cosine of the complex number
+    */
+    public cos() : complex {
+        return new complex(Math.cosh(this.img) * Math.cos(this.real), -Math.sinh(this.img) * Math.sin(this.real));
+    }
+
 
     /**
     * Statc method to construct a complex number in rectangular form from polar coordinates
     * @param theta - The angle 
     * @param magnitude - The magnitude
-    * @returns Complex number constructed from theta & the magnitude
+    * @returns Complex number in rectangular coordinates constructed from theta & the magnitude
     */
     public static fromPolar(theta : number, magnitude : number) : complex {
         return new complex(magnitude * Math.cos(theta), magnitude * Math.sin(theta));
