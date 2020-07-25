@@ -106,6 +106,14 @@ export class complex {
     }
 
     /**
+    * Get the negation of the complex number
+    * @returns The negation of the complex number:  -a + (-bi)
+    */
+    public neg() : complex {
+        return new complex(-this.real, -this.img);
+    }
+
+    /**
     * Get the arguement of the complex number, the angle in radians with the x-axis in polar coordinates 
     * @returns The arguement of the complex number
     */
@@ -115,10 +123,11 @@ export class complex {
 
     /**
     * Get the exponential of the complex number
-    * @returns The The exponential of the complex number: (exp(a) * cos(b)) + (exp(a) * sin(b))(i)
+    * @returns The exponential of the complex number: (exp(a) * cos(b)) + (exp(a) * sin(b))(i)
     */
     public exp() : complex {
-        return new complex(Math.exp(this.real) * Math.cos(this.img), Math.exp(this.real) * Math.sin(this.img));
+        return new complex(Math.exp(this.real) * Math.cos(this.img), 
+        Math.exp(this.real) * Math.sin(this.img));
     }
 
     /**
@@ -126,7 +135,8 @@ export class complex {
     * @returns The sine of the complex number
     */
     public sin() : complex {
-        return new complex(Math.cosh(this.img) * Math.sin(this.real), Math.sinh(this.img) * Math.cos(this.real));
+        return new complex(Math.cosh(this.img) * Math.sin(this.real), 
+        Math.sinh(this.img) * Math.cos(this.real));
     }
 
     /**
@@ -134,17 +144,48 @@ export class complex {
     * @returns The cosine of the complex number
     */
     public cos() : complex {
-        return new complex(Math.cosh(this.img) * Math.cos(this.real), -Math.sinh(this.img) * Math.sin(this.real));
+        return new complex(Math.cosh(this.img) * Math.cos(this.real), 
+        -Math.sinh(this.img) * Math.sin(this.real));
     }
 
+    /**
+    * Get the tangent of the complex number
+    * @returns The tangent of the complex number
+    */
+    public tan() : complex {
+        // defined in terms of the identity tan(z) = sin(z) / cos(z)
+        let num = this.sin();
+        let denom = this.cos();
+        return num.div(denom);
+    }
 
     /**
     * Statc method to construct a complex number in rectangular form from polar coordinates
-    * @param theta - The angle 
+    * @param theta - The angle/arguement
     * @param magnitude - The magnitude
-    * @returns Complex number in rectangular coordinates constructed from theta & the magnitude
+    * @returns Complex number in rectangular coordinates constructed from the arguement theta & the magnitude
     */
     public static fromPolar(theta : number, magnitude : number) : complex {
         return new complex(magnitude * Math.cos(theta), magnitude * Math.sin(theta));
+    }
+
+    /**
+    * Get the complex number's polar coordinates as a tuple
+    * @returns A tuple containing the arguement/angle of the complex number as the 1st element, and the magnitude as the 2nd
+    */
+    public toPolar() : [number, number] {
+        let mag = this.mag();
+        let theta = this.arg();
+        return [theta, mag];
+    }
+
+
+    public toString() : string {
+        if (Math.sign(this.img) === -1) {
+            // bit of a dirty hack..
+            return this.real + " - " + -this.img + "i";
+        } else {
+            return this.real + " + " + this.img + "i";
+        }
     }
 }

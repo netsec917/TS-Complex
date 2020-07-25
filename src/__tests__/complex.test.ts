@@ -60,10 +60,22 @@ test('Magnitude', () => {
   expect(x.mag()).toBeCloseTo(7.615);
 });
 
+test('Arguement', () => {
+  let x = new complex(3, 7);
+  expect(x.arg()).toBeCloseTo(Math.atan(7 / 3));
+});
+
 test('Conjugate', () => {
   let x = new complex(3, 7);
   let xBar = x.conj();
   expect(xBar.real).toBe(3);
+  expect(xBar.img).toBe(-7);
+});
+
+test('Negation', () => {
+  let x = new complex(3, 7);
+  let xBar = x.neg();
+  expect(xBar.real).toBe(-3);
   expect(xBar.img).toBe(-7);
 });
 
@@ -76,16 +88,19 @@ test('fromPolarRadians', () => {
   expect(x.img).toBeCloseTo(4.55);
 });
 
+test('toPolarRadians', () => {
+  // in radians
+  let x = new complex(3, 7);
+  let polar = x.toPolar();
+  expect(polar[0]).toBeCloseTo(x.arg());
+  expect(polar[1]).toBeCloseTo(x.mag());
+});
+
 test('Exponential', () => {
   let x = new complex(3, 7);
   let y = x.exp();
   expect(y.real).toBeCloseTo(15.1425316);
   expect(y.img).toBeCloseTo(13.1959286);
-});
-
-test('Arguement', () => {
-  let x = new complex(3, 7);
-  expect(x.arg()).toBeCloseTo(Math.atan(7 / 3));
 });
 
 test('Sin', () => {
@@ -100,4 +115,23 @@ test('Cos', () => {
   let y = x.cos();
   expect(y.real).toBeCloseTo(-542.829751);
   expect(y.img).toBeCloseTo(-77.3783757);
+});
+
+test('Tan', () => {
+  let x = new complex(3, 7);
+  let y = x.tan();
+  // expect(y.real).toBeCloseTo();
+  expect(y.real).toBeCloseTo(-4.64683281e-7);
+  expect(y.img).toBeCloseTo(0.999998403);
+});
+
+test('toString', () => {
+  let x = new complex(3, 7);
+  let y = x.toString();
+  let yBar = x.conj().toString();
+  let yNeg = x.neg().toString();
+  // expect(y.real).toBeCloseTo();
+  expect(y).toBe('3 + 7i');
+  expect(yBar).toBe('3 - 7i');
+  expect(yNeg).toBe('-3 - 7i');
 });
