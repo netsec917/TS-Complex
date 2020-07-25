@@ -126,7 +126,7 @@ export class complex {
     * @returns The sine of the complex number
     */
     public sin() : complex {
-        return new complex(Math.cosh(this.img) * Math.sin(this.real), -Math.sinh(this.img) * Math.cos(this.real));
+        return new complex(Math.cosh(this.img) * Math.sin(this.real), Math.sinh(this.img) * Math.cos(this.real));
     }
 
     /**

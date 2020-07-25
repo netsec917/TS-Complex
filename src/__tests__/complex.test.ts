@@ -92,7 +92,7 @@ test('Sin', () => {
   let x = new complex(3, 7);
   let y = x.sin();
   expect(y.real).toBeCloseTo(77.3785044);
-  expect(y.img).toBeCloseTo(542.828848);
+  expect(y.img).toBeCloseTo(-542.828848);
 });
 
 test('Cos', () => {
