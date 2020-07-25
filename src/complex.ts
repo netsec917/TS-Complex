@@ -106,6 +106,22 @@ export class complex {
     }
 
     /**
+    * Get the arguement of the complex number, the angle in radians with the x-axis in polar coordinates 
+    * @returns The arguement of the complex number
+    */
+    public arguement() : number {
+        return Math.atan2(this.imaginary, this.real);
+    }
+
+    /**
+    * Get the exponential of the complex number
+    * @returns The The exponential of the complex number: (exp(a) * cos(b)) + (exp(a) * sin(b))(i)
+    */
+    public exponential() : complex {
+        return new complex(Math.exp(this.real) * Math.cos(this.imaginary), Math.exp(this.real) * Math.sin(this.imaginary));
+    }
+
+    /**
     * Statc method to construct a complex number in rectangular form from polar coordinates
     * @param theta - The angle 
     * @param magnitude - The magnitude

@@ -75,3 +75,15 @@ test('fromPolarRadians', () => {
   expect(x.real).toBeCloseTo(-2.08);
   expect(x.imaginary).toBeCloseTo(4.55);
 });
+
+test('Exponential', () => {
+  let x = new complex(3, 7);
+  let y = x.exponential();
+  expect(y.real).toBeCloseTo(15.1425316);
+  expect(y.imaginary).toBeCloseTo(13.1959286);
+});
+
+test('Arguement', () => {
+  let x = new complex(3, 7);
+  expect(x.arguement()).toBeCloseTo(Math.atan(7 / 3));
+});
