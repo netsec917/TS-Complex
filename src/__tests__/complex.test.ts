@@ -103,6 +103,13 @@ test('Exponential', () => {
   expect(y.img).toBeCloseTo(13.1959286);
 });
 
+test('Natural Logarithmic', () => {
+  let x = new complex(3, 7);
+  let y = x.log();
+  expect(y.real).toBeCloseTo(2.03022151);
+  expect(y.img).toBeCloseTo(1.16590454);
+});
+
 test('Sin', () => {
   let x = new complex(3, 7);
   let y = x.sin();

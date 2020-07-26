@@ -131,6 +131,14 @@ export class complex {
     }
 
     /**
+    * Get the natural base e log of the complex number
+    * @returns The natural base e log of the complex number
+    */
+    public log() : complex {
+        return new complex(Math.log(this.mag()), Math.atan2(this.img, this.real));
+    }
+
+    /**
     * Get the sine of the complex number
     * @returns The sine of the complex number
     */
@@ -179,7 +187,11 @@ export class complex {
         return [theta, mag];
     }
 
-
+    
+    /**
+    * Get the complex number's polar coordinates as a tuple
+    * @returns A tuple containing the arguement/angle of the complex number as the 1st element, and the magnitude as the 2nd
+    */
     public toString() : string {
         if (Math.sign(this.img) === -1) {
             // bit of a dirty hack..
