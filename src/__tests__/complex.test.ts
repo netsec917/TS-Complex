@@ -1,4 +1,5 @@
 import {complex} from '../complex';
+import { exitCode } from 'process';
 
 test('Construction', () => {
   let x = new complex(3, 7);
@@ -137,8 +138,16 @@ test('toString', () => {
   let y = x.toString();
   let yBar = x.conj().toString();
   let yNeg = x.neg().toString();
-  // expect(y.real).toBeCloseTo();
   expect(y).toBe('3 + 7i');
   expect(yBar).toBe('3 - 7i');
   expect(yNeg).toBe('-3 - 7i');
+});
+
+test('Equals', () => {
+  let x = new complex(3, 7);
+  let y = new complex(3, 7);
+  let z = new complex(2, 5);
+  
+  expect(x.equals(y)).toBe(true);
+  expect(x.equals(z)).toBe(false);
 });

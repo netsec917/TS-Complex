@@ -1,6 +1,6 @@
 {
   "name": "ts-complex-numbers",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A Complex numbers class for TypeScript",
   "main": "lib/complex.js",
   "types": "lib/complex.d.ts",

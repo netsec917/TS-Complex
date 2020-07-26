@@ -187,7 +187,6 @@ export class complex {
         return [theta, mag];
     }
 
-    
     /**
     * Get the complex number's polar coordinates as a tuple
     * @returns A tuple containing the arguement/angle of the complex number as the 1st element, and the magnitude as the 2nd
@@ -198,6 +197,19 @@ export class complex {
             return this.real + " - " + -this.img + "i";
         } else {
             return this.real + " + " + this.img + "i";
+        }
+    }
+
+    /**
+    * Compare two complex number for equality
+    * @param other - The 2nd complex number operand
+    * @returns true if equal, else false
+    */
+    public equals(other : complex) : boolean {
+        if (this.real === other.real && this.img === other.img) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
