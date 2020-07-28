@@ -168,7 +168,7 @@ export class complex {
     }
 
     /**
-    * Statc method to construct a complex number in rectangular form from polar coordinates
+    * Static method to construct a complex number in rectangular form from polar coordinates
     * @param theta - The angle/arguement
     * @param magnitude - The magnitude
     * @returns Complex number in rectangular coordinates constructed from the arguement theta & the magnitude
@@ -188,8 +188,8 @@ export class complex {
     }
 
     /**
-    * Get the complex number's polar coordinates as a tuple
-    * @returns A tuple containing the arguement/angle of the complex number as the 1st element, and the magnitude as the 2nd
+    * Get the complex number as a string
+    * @returns String representation of the complex number
     */
     public toString() : string {
         if (Math.sign(this.img) === -1) {
@@ -201,7 +201,7 @@ export class complex {
     }
 
     /**
-    * Compare two complex number for equality
+    * Compare two complex numbers for equality
     * @param other - The 2nd complex number operand
     * @returns true if equal, else false
     */
